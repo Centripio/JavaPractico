@@ -10,6 +10,6 @@ package com.soccer;
  * @author andresbedoya
  */
 public class Player {
-    String playerName;
+    String playerName; //Nombre completo
     
 }
