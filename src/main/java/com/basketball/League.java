@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.soccer;
+package com.basketball;
 
 /**
  *
@@ -42,16 +42,42 @@ public class League {
         
         System.out.println("EQUIPO 1 ");
         for (Player player : team1.playerArray) {
-            System.out.println("player " + player.playerName);
+            System.out.println("player " + player.playerName.split(" ")[1] + " " +player.playerName.split(" ")[0]);
+            
         }
         
         System.out.println("EQUIPO 2 ");
         for (Player player : team2.playerArray) {
-            System.out.println("player " + player.playerName);
+            System.out.println("player " + player.playerName.split(" ")[1] + " " + player.playerName.split(" ")[0]);
+
         }
                 
+        Game curGame = new Game();
+        curGame.local = team1;
+        curGame.visitor = team2;
         
-          
+        Point point = new Point();
+        point.player = curGame.local.playerArray[2];
+        point.team=curGame.local;
+        point.time=56;
+        
+        Point[] points = {point};
+        curGame.point = points;
+        
+        System.out.println("El punto fue anotado  en el minuto "
+            + curGame.point[0].time + " por "
+            + curGame.point[0].player.playerName + " para el equipo " 
+            + curGame.point[0].team.teamName);
+        
+        
+        for (Player player: team2.playerArray){
+            if (player.playerName.matches(".*Jor.*")) {
+                System.out.println("Jugador Encontrado " + player.playerName); 
+                System.out.println("Apellido " + player.playerName.split(" ")[1]); 
+            }
+        }
+        
+        
         
  
     }

@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.soccer;
+package com.basketball;
 
 /**
  *
  * @author andresbedoya
  */
-public class Player {
-    String playerName; //Nombre completo
+public class Game {
+    Team local;
+    Team visitor;
+    Point[] point;
     
 }
