@@ -30,7 +30,7 @@ public class GameUtils {
         int i = 0;
         for (Point currPoint : currGame.points) {
             currPoint = new Point();
-            currPoint.team = Math.random() > 0.5 ? getHomeTeam(currGame, "home") : getHomeTeam(currGame, "away");
+            currPoint.team = Math.random() > 0.5 ? getHomeTeam(currGame, "local") : getHomeTeam(currGame, "visitor");
             currPoint.player = currPoint.team.playerArray[(int) (Math.random() * currPoint.team.playerArray.length)];
             currPoint.time = (int) (Math.random() * 90);
             currGame.points[i] = currPoint;
