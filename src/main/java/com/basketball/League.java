@@ -17,25 +17,9 @@ public class League {
         Game[] theGames = createGames(theTeams);
                 
         Game curGame = theGames[0];
-        
+        curGame.playGame();
+
         System.out.println(curGame.toString());
-        
-        /*
-        Point point = new Point();
-        point.player = curGame.local.playerArray[2];
-        point.team=curGame.local;
-        point.time=56;
-        
-        Point[] points = {point};
-        curGame.point = points;
-        
-        System.out.println("El punto fue anotado  en el minuto "
-            + curGame.point[0].time + " por "
-            + curGame.point[0].player.playerName + " para el equipo " 
-            + curGame.point[0].team.teamName);
-        
-     */
-        
  
     }
     

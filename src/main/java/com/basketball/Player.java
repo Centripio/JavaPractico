@@ -10,6 +10,6 @@ package com.basketball;
  * @author andresbedoya
  */
 public class Player {
-    String playerName; //Nombre completo
+    public String playerName; //Nombre completo
     
 }

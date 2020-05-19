@@ -10,7 +10,7 @@ package com.basketball;
  * @author andresbedoya
  */
 public class Team {
-    String teamName;
-    Player[] playerArray;
+    public String teamName;
+    public Player[] playerArray;
     
 }

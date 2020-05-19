@@ -10,8 +10,8 @@ package com.basketball;
  * @author andresbedoya
  */
 public class Point {
-    Team team;
-    Player player;
-    double time;
+    public Team team;
+    public Player player;
+    public double time;
     
 }
