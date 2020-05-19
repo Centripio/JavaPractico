@@ -13,5 +13,12 @@ public class Game {
     Team local;
     Team visitor;
     Point[] point;
+
+    @Override
+    public String toString() {
+        return "local: " + local.teamName + " visitor:" + visitor.teamName;
+    }
+    
+    
     
 }
