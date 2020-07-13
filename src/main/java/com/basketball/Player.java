@@ -10,6 +10,20 @@ package com.basketball;
  * @author andresbedoya
  */
 public class Player {
-    public String playerName; //Nombre completo
+    private String playerName; //Nombre completo
+    
+    /**
+     * @return the playerName
+     */
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    /**
+     * @param playerName the playerName to set
+     */
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
     
 }

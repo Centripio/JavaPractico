@@ -10,8 +10,50 @@ package com.basketball;
  * @author andresbedoya
  */
 public class Point {
-    public Team team;
-    public Player player;
-    public double time;
+    private Team team;
+    private Player player;
+    private double time;
+
+    /**
+     * @return the team
+     */
+    public Team getTeam() {
+        return team;
+    }
+
+    /**
+     * @param team the team to set
+     */
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    /**
+     * @return the player
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * @param player the player to set
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    /**
+     * @return the time
+     */
+    public double getTime() {
+        return time;
+    }
+
+    /**
+     * @param time the time to set
+     */
+    public void setTime(double time) {
+        this.time = time;
+    }
     
 }

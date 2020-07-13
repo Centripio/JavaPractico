@@ -10,7 +10,34 @@ package com.basketball;
  * @author andresbedoya
  */
 public class Team {
-    public String teamName;
-    public Player[] playerArray;
-    
+    private String teamName;
+    private Player[] playerArray;
+
+    /**
+     * @return the teamName
+     */
+    public String getTeamName() {
+        return teamName;
+    }
+
+    /**
+     * @param teamName the teamName to set
+     */
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    /**
+     * @return the playerArray
+     */
+    public Player[] getPlayerArray() {
+        return playerArray;
+    }
+
+    /**
+     * @param playerArray the playerArray to set
+     */
+    public void setPlayerArray(Player[] playerArray) {
+        this.playerArray = playerArray;
+    }    
 }

@@ -26,27 +26,27 @@ public class League {
     public static Team[] createTeams(){
         //Team 1
         Player player1 = new Player();
-        player1.playerName = "Oscar Blancarte";
+        player1.setPlayerName("Oscar Blancarte");
         Player player2 = new Player();
-        player2.playerName = "Carlos Raygoza";
+        player2.setPlayerName("Carlos Raygoza");
         Player player3 = new Player();
-        player3.playerName = "Andres Bedoya";
+        player3.setPlayerName("Andres Bedoya");
         Player[] thePlayers = {player1, player2, player3};
         
         Team team1 = new Team();
-        team1.teamName = "Los Arquitectos";
-        team1.playerArray = thePlayers;
+        team1.setTeamName("Los Arquitectos");
+        team1.setPlayerArray(thePlayers);
         
         //Team2
         Team team2 = new Team();
-        team2.teamName = "Los Rivales";
-        team2.playerArray = new Player[3];
-        team2.playerArray[0] = new Player();
-        team2.playerArray[0].playerName = "Michael Jordan";
-        team2.playerArray[1] = new Player();
-        team2.playerArray[1].playerName = "Juan Matias";
-        team2.playerArray[2] = new Player();
-        team2.playerArray[2].playerName = "Ray Charles";
+        team2.setTeamName("Los Rivales");
+        team2.setPlayerArray(new Player[3]);
+        team2.getPlayerArray()[0] = new Player();
+        team2.getPlayerArray()[0].setPlayerName("Michael Jordan");
+        team2.getPlayerArray()[1] = new Player();
+        team2.getPlayerArray()[1].setPlayerName("Juan Matias");
+        team2.getPlayerArray()[2] = new Player();
+        team2.getPlayerArray()[2].setPlayerName("Ray Charles");
         
         Team[] theTeams = {team1, team2};
         return theTeams;
@@ -54,8 +54,8 @@ public class League {
     
     public static Game[] createGames(Team[] theTeams){
         Game theGame = new Game();
-        theGame.local = theTeams[0];
-        theGame.visitor = theTeams[1];
+        theGame.setLocal(theTeams[0]);
+        theGame.setVisitor(theTeams[1]);
         Game[] theGames = {theGame};
         return theGames;
     }

@@ -22,21 +22,21 @@ import java.util.Scanner;
 public class GameUtils {
       public static void addGamePoints(Game currGame) {
         
-        if (currGame.points == null) {
-            currGame.points = new Point[(int) (Math.random() * 40)]; 
+        if (currGame.getPoints() == null) {
+            currGame.setPoints(new Point[(int) (Math.random() * 40)]); 
         }
 
         //System.out.println(currGame.points.length);
         int i = 0;
-        for (Point currPoint : currGame.points) {
+        for (Point currPoint : currGame.getPoints()) {
             currPoint = new Point();
-            currPoint.team = Math.random() > 0.5 ? getHomeTeam(currGame, "local") : getHomeTeam(currGame, "visitor");
-            currPoint.player = currPoint.team.playerArray[(int) (Math.random() * currPoint.team.playerArray.length)];
-            currPoint.time = (int) (Math.random() * 90);
-            currGame.points[i] = currPoint;
+            currPoint.setTeam(Math.random() > 0.5 ? getHomeTeam(currGame, "local") : getHomeTeam(currGame, "visitor"));
+            currPoint.setPlayer(currPoint.getTeam().getPlayerArray()[(int) (Math.random() * currPoint.getTeam().getPlayerArray().length)]);
+            currPoint.setTime((int) (Math.random() * 90));
+            currGame.getPoints()[i] = currPoint;
             i++;
         }
-        Arrays.sort(currGame.points, (g1, g2) -> Double.valueOf(g1.time).compareTo(Double.valueOf(g2.time)));
+        Arrays.sort(currGame.getPoints(), (g1, g2) -> Double.valueOf(g1.getTime()).compareTo(Double.valueOf(g2.getTime())));
 
     }
 
@@ -46,7 +46,8 @@ public class GameUtils {
         Method m;
         Field f;
         try {
-            m = Game.class.getMethod("get" + Character.toUpperCase(homeOrAway.charAt(0)) + homeOrAway.substring(1) + "Team");
+            String metodo = "get" + Character.toUpperCase(homeOrAway.charAt(0)) + homeOrAway.substring(1);
+            m = Game.class.getMethod(metodo);
             theTeam = (Team)m.invoke(currGame);
             //System.out.println(theTeam);
         } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException em) {
