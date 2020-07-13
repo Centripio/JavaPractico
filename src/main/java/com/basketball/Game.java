@@ -6,6 +6,7 @@
 package com.basketball;
 
 import com.basketball.util.GameUtils;
+import sun.misc.VM;
 
 /**
  *
@@ -62,7 +63,7 @@ public class Game {
         int numberOfPoints = (int)(Math.random() * maxPoints + 1);
         System.out.println("numberOfPoints:" + numberOfPoints);
         Point[] thePoints = new Point[numberOfPoints];
-        System.out.println("thePoints:" + thePoints.length);
+        //System.out.println("thePoints:" + thePoints.length);
         this.setPoints(thePoints);
         GameUtils.addGamePoints(this);
     }
@@ -72,8 +73,18 @@ public class Game {
     }
     
     public String getDescription(){
+        int pointsLocalTeam = 0;
+        int pointsVisitorTeam = 0;
+        
+        
         StringBuilder returnString = new StringBuilder();
         for (Point point: this.getPoints()) {
+            if (point.getTeam() == local) {
+                pointsLocalTeam++;
+            } else {
+                pointsVisitorTeam++;
+            }
+            
             returnString.append("El punto fue anotado en el minuto "
                 + point.getTime() + " por el jugador "
                 + point.getPlayer().getPlayerName() + " para el equipo " 
@@ -81,6 +92,20 @@ public class Game {
                 + "\n");
             
         }
+        
+        if(pointsLocalTeam == pointsVisitorTeam) {
+            returnString.append("Es un empate");
+            local.incPointsTotal(1);
+            visitor.incPointsTotal(1);
+        } else if (pointsLocalTeam > pointsVisitorTeam){
+            returnString.append(local.getTeamName() + " gano");
+            local.incPointsTotal(2);
+        } else {
+            returnString.append(visitor.getTeamName() + " gano");
+            visitor.incPointsTotal(2);
+        }
+        
+        returnString.append(" (" + pointsLocalTeam + " - " + pointsVisitorTeam + ") \n" );
         return returnString.toString();
     }
 

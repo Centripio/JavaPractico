@@ -12,7 +12,12 @@ package com.basketball;
 public class Team {
     private String teamName;
     private Player[] playerArray;
+    private int pointsTotal;
 
+    public void incPointsTotal(int points) {
+        this.setPointsTotal(this.getPointsTotal() + points);
+    }
+    
     /**
      * @return the teamName
      */
@@ -40,4 +45,18 @@ public class Team {
     public void setPlayerArray(Player[] playerArray) {
         this.playerArray = playerArray;
     }    
+
+    /**
+     * @return the pointsTotal
+     */
+    public int getPointsTotal() {
+        return pointsTotal;
+    }
+
+    /**
+     * @param pointsTotal the pointsTotal to set
+     */
+    public void setPointsTotal(int pointsTotal) {
+        this.pointsTotal = pointsTotal;
+    }
 }

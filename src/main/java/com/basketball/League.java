@@ -12,14 +12,17 @@ package com.basketball;
 public class League {
     
     public static void main (String... args) {
+        League theLeague = new League();
         
         Team[] theTeams = createTeams();
         Game[] theGames = createGames(theTeams);
                 
-        Game curGame = theGames[0];
-        curGame.playGame();
+        for (Game currGame: theGames) {
+            currGame.playGame();
+            System.out.println(currGame.getDescription());
+        }
 
-        System.out.println(curGame.toString());
+        theLeague.showBestTeam(theTeams);
  
     }
     
@@ -58,5 +61,18 @@ public class League {
         theGame.setVisitor(theTeams[1]);
         Game[] theGames = {theGame};
         return theGames;
+    }
+    
+    public void showBestTeam(Team[] theTeams){
+        Team currBestTeam = theTeams[0];
+        System.out.println("\nTeam Points");
+        
+        for (Team currTeam : theTeams) {
+            System.out.println(currTeam.getTeamName() + " : " + currTeam.getPointsTotal());
+            currBestTeam = currTeam.getPointsTotal() > currBestTeam.getPointsTotal() ? currTeam: currBestTeam;
+        }
+        
+        System.out.println("El ganador de la liga es " + currBestTeam.getTeamName());
+        
     }
 }
