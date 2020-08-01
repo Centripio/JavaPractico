@@ -20,6 +20,8 @@ public class League {
         for (Game currGame: theGames) {
             currGame.playGame();
             System.out.println(currGame.getDescription());
+            break;
+            
         }
 
         theLeague.showBestTeam(theTeams);

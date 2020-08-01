@@ -5,8 +5,7 @@
  */
 package com.basketball;
 
-import com.basketball.util.GameUtils;
-import sun.misc.VM;
+import java.util.ArrayList;
 
 /**
  *
@@ -59,17 +58,26 @@ public class Game {
     }
 
 
-    public void playGame(int maxPoints) {
-        int numberOfPoints = (int)(Math.random() * maxPoints + 1);
-        System.out.println("numberOfPoints:" + numberOfPoints);
-        Point[] thePoints = new Point[numberOfPoints];
-        //System.out.println("thePoints:" + thePoints.length);
-        this.setPoints(thePoints);
-        GameUtils.addGamePoints(this);
-    }
     
     public void playGame(){
-        playGame(35);
+       final int minutosBaloncesto = 60; 
+       ArrayList<Point> eventList = new ArrayList();
+       Point currEvent;
+       for ( int i = 1; i <= minutosBaloncesto; i++) {
+           //System.out.println("i=" + i);
+           if (Math.random() > 0.95) {
+               currEvent = new Point();
+               currEvent.setTeam(Math.random() >  0.5 ? visitor : local);
+               currEvent.setPlayer(currEvent.getTeam()
+                       .getPlayerArray()[(int)(Math.random() * currEvent.getTeam().getPlayerArray().length)]);  
+               currEvent.setTime(i);
+               eventList.add(currEvent);
+               System.out.println(i);
+           }
+           this.points = new Point[eventList.size()];
+           eventList.toArray(points);
+           
+       }
     }
     
     public String getDescription(){
