@@ -5,6 +5,10 @@
  */
 package com.basketball;
 
+import com.basketball.util.PlayerDatabase;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
 /**
  *
  * @author andresbedoya
@@ -14,8 +18,9 @@ public class League {
     public static void main (String... args) {
         League theLeague = new League();
         
-        Team[] theTeams = createTeams();
-        Game[] theGames = createGames(theTeams);
+        //Team[] theTeams = createTeams();
+        Team[] theTeams = theLeague.createTeams("Los Arquitectos,Los rivales,Los increibles", 6);
+        Game[] theGames = theLeague.createGames(theTeams);
                 
         for (Game currGame: theGames) {
             currGame.playGame();
@@ -28,41 +33,29 @@ public class League {
  
     }
     
-    public static Team[] createTeams(){
-        //Team 1
-        Player player1 = new Player();
-        player1.setPlayerName("Oscar Blancarte");
-        Player player2 = new Player();
-        player2.setPlayerName("Carlos Raygoza");
-        Player player3 = new Player();
-        player3.setPlayerName("Andres Bedoya");
-        Player[] thePlayers = {player1, player2, player3};
+    public Team[] createTeams(String teamNames, int teamSize){
+        PlayerDatabase playerDB = new PlayerDatabase();
         
-        Team team1 = new Team();
-        team1.setTeamName("Los Arquitectos");
-        team1.setPlayerArray(thePlayers);
-        
-        //Team2
-        Team team2 = new Team();
-        team2.setTeamName("Los Rivales");
-        team2.setPlayerArray(new Player[3]);
-        team2.getPlayerArray()[0] = new Player();
-        team2.getPlayerArray()[0].setPlayerName("Michael Jordan");
-        team2.getPlayerArray()[1] = new Player();
-        team2.getPlayerArray()[1].setPlayerName("Juan Matias");
-        team2.getPlayerArray()[2] = new Player();
-        team2.getPlayerArray()[2].setPlayerName("Ray Charles");
-        
-        Team[] theTeams = {team1, team2};
+        StringTokenizer teamNameTokens = new StringTokenizer(teamNames, ",");
+        Team[] theTeams = new Team[teamNameTokens.countTokens()];
+        for (int i=0; i < theTeams.length; i++) {
+            theTeams[i] = new Team(teamNameTokens.nextToken(), playerDB.getTeam(teamSize));
+        }
         return theTeams;
     }
     
-    public static Game[] createGames(Team[] theTeams){
-        Game theGame = new Game();
-        theGame.setLocal(theTeams[0]);
-        theGame.setVisitor(theTeams[1]);
-        Game[] theGames = {theGame};
-        return theGames;
+    public Game[] createGames(Team[] theTeams){
+        ArrayList<Game> theGames = new ArrayList();
+        
+        for(Team localTeam : theTeams) {
+            for(Team visitorTeam : theTeams) {
+                if (localTeam != visitorTeam) {
+                    theGames.add(new Game(localTeam, visitorTeam));
+                }
+            }
+        }
+        
+        return (Game[]) theGames.toArray(new Game[1]);
     }
     
     public void showBestTeam(Team[] theTeams){

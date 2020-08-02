@@ -15,6 +15,11 @@ public class Game {
     private Team local;
     private Team visitor;
     private GameEvent[] points;
+    
+    public Game(Team homeTeam, Team awayTeam){
+        this.local = homeTeam;
+        this.visitor = awayTeam;
+    }
     /**
      * @return the local
      */

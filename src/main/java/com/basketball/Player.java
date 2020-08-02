@@ -12,6 +12,10 @@ package com.basketball;
 public class Player {
     private String playerName; //Nombre completo
     
+    public Player(String playerName) {
+        this.playerName = playerName;
+    }
+    
     /**
      * @return the playerName
      */
