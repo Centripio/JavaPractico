@@ -6,6 +6,7 @@
 package com.basketball;
 
 import com.basketball.util.PlayerDatabase;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -45,12 +46,13 @@ public class League {
     }
     
     public Game[] createGames(Team[] theTeams){
+        int daysBetweenGames = 0;
         ArrayList<Game> theGames = new ArrayList();
         
         for(Team localTeam : theTeams) {
             for(Team visitorTeam : theTeams) {
                 if (localTeam != visitorTeam) {
-                    theGames.add(new Game(localTeam, visitorTeam));
+                    theGames.add(new Game(localTeam, visitorTeam, LocalDateTime.now().plusDays(daysBetweenGames)));
                 }
             }
         }

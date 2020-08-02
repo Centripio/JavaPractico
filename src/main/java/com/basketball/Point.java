@@ -10,6 +10,11 @@ package com.basketball;
  * @author andresbedoya
  */
 public class Point  extends GameEvent{
+    
+    @Override
+    public String toString(){
+        return "punto";
+    }
  
     
 }
