@@ -9,7 +9,6 @@ package com.basketball;
  *
  * @author andresbedoya
  */
-public class Point  extends GameEvent{
- 
+public class Possession extends GameEvent {
     
 }

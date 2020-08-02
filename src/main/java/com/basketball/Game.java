@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Game {
     private Team local;
     private Team visitor;
-    private Point[] points;
+    private GameEvent[] points;
     /**
      * @return the local
      */
@@ -46,7 +46,7 @@ public class Game {
     /**
      * @return the points
      */
-    public Point[] getPoints() {
+    public GameEvent[] getPoints() {
         return points;
     }
 
@@ -61,12 +61,12 @@ public class Game {
     
     public void playGame(){
        final int minutosBaloncesto = 60; 
-       ArrayList<Point> eventList = new ArrayList();
-       Point currEvent;
+       ArrayList<GameEvent> eventList = new ArrayList();
+       GameEvent currEvent;
        for ( int i = 1; i <= minutosBaloncesto; i++) {
            //System.out.println("i=" + i);
            if (Math.random() > 0.95) {
-               currEvent = new Point();
+               currEvent =  Math.random() >0.6 ? new Point() : new Possession();
                currEvent.setTeam(Math.random() >  0.5 ? visitor : local);
                currEvent.setPlayer(currEvent.getTeam()
                        .getPlayerArray()[(int)(Math.random() * currEvent.getTeam().getPlayerArray().length)]);  
@@ -74,7 +74,7 @@ public class Game {
                eventList.add(currEvent);
                System.out.println(i);
            }
-           this.points = new Point[eventList.size()];
+           this.points = new GameEvent[eventList.size()];
            eventList.toArray(points);
            
        }
@@ -86,17 +86,17 @@ public class Game {
         
         
         StringBuilder returnString = new StringBuilder();
-        for (Point point: this.getPoints()) {
-            if (point.getTeam() == local) {
+        for (GameEvent currEvent: this.getPoints()) {
+            if (currEvent.getTeam() == local) {
                 pointsLocalTeam++;
             } else {
                 pointsVisitorTeam++;
             }
             
-            returnString.append("El punto fue anotado en el minuto "
-                + point.getTime() + " por el jugador "
-                + point.getPlayer().getPlayerName() + " para el equipo " 
-                + point.getTeam().getTeamName() 
+            returnString.append("El evento " + currEvent.getClass().getSimpleName() + " ocurrio en el minuto "
+                + currEvent.getTime() + " por el jugador "
+                + currEvent.getPlayer().getPlayerName() + " para el equipo " 
+                + currEvent.getTeam().getTeamName() 
                 + "\n");
             
         }
