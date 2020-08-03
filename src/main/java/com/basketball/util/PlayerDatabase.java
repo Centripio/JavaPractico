@@ -24,12 +24,16 @@ public class PlayerDatabase {
         }
     }
     
-    public Player[] getTeam(int numberOfPlayers){
+    public Player[] getTeam(int numberOfPlayers) throws PlayerDatabaseException{
         Player[] teamPlayers = new Player[numberOfPlayers];
-        for (int i = 0; i < numberOfPlayers; i++){
-            int playerIndex = (int) (Math.random() * players.size());
-            teamPlayers[i] = players.get(playerIndex);
-            players.remove(playerIndex);
+        try {
+            for (int i = 0; i < numberOfPlayers; i++){
+                int playerIndex = (int) (Math.random() * players.size());
+                teamPlayers[i] = players.get(playerIndex);
+                players.remove(playerIndex);
+            }
+        } catch (IndexOutOfBoundsException e) { 
+            throw new PlayerDatabaseException("No hay suficientes jugadores en la base de datos para los equipos solicitados");
         }
         return teamPlayers;
         
